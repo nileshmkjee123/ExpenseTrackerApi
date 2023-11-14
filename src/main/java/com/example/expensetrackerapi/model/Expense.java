@@ -1,6 +1,8 @@
 package com.example.expensetrackerapi.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,6 +24,8 @@ public class Expense {
 @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 @Column(name = "expense_name")
+@NotNull(message = "Expense name must not be null")
+@Size(min = 3,message = "At least 3 characters required")
 private String name;
 
 private String description;
